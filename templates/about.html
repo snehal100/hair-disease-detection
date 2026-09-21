@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Health Lab | About</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'homepage' %}">Hair Health <span>Lab</span></a>
+        <nav aria-label="Main navigation">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a class="active" href="{% url 'about' %}">About</a>
+            <a href="{% url 'index' %}">Detection</a>
+            <a class="nav-button" href="{% url 'login' %}">Log in</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p class="eyebrow">About the project</p>
+            <h1>Turning an image into a more informed conversation.</h1>
+            <p class="lead">Hair Disease Detection is a machine learning web application created as an academic project. It combines a Django interface with an image classification model to provide an initial prediction for selected hair and scalp conditions.</p>
+        </section>
+
+        <section class="content-grid">
+            <article class="feature feature-wide">
+                <span class="feature-number">01</span>
+                <h2>What it does</h2>
+                <p>The application accepts a hair or scalp image, prepares it for analysis, and sends it through a trained DenseNet-based model with an SVM classification layer. It then displays the most likely class and links to background information about that condition.</p>
+            </article>
+            <article class="feature">
+                <span class="feature-number">02</span>
+                <h2>Supported conditions</h2>
+                <ul>
+                    <li>Alopecia Areata</li>
+                    <li>Folliculitis</li>
+                    <li>Psoriasis</li>
+                </ul>
+            </article>
+            <article class="feature">
+                <span class="feature-number">03</span>
+                <h2>How to use it</h2>
+                <p>Open Detection, choose a clear image, submit it, and review the predicted label. Better lighting and a focused image can help produce a more useful result.</p>
+            </article>
+        </section>
+
+        <section class="notice">
+            <strong>Important note</strong>
+            <p>This tool is for education and preliminary screening only. It is not a medical diagnosis. Please consult a qualified healthcare professional for persistent symptoms, uncertainty, or treatment decisions.</p>
+        </section>
+
+        <a class="primary-button" href="{% url 'index' %}">Try the detection tool <span aria-hidden="true">-&gt;</span></a>
+    </main>
+
+    <footer>Hair Disease Detection <span>Academic project</span></footer>
+</body>
+</html>

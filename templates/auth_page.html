@@ -1,0 +1,54 @@
+<!-- templates/auth_page.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <script>
+        function showForm(formId) {
+            document.getElementById("login-form").style.display = formId === 'login' ? 'block' : 'none';
+            document.getElementById("register-form").style.display = formId === 'register' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome</h2>
+
+    <div>
+        <button onclick="showForm('login')">Login</button>
+        <button onclick="showForm('register')">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" style="display: block;">
+        <h3>Login</h3>
+        <form method="POST" action="{% url 'auth_page' %}">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="register-form" style="display: none;">
+        <h3>Register</h3>
+        <form method="POST" action="{% url 'auth_page' %}">
+            {% csrf_token %}
+            {{ register_form.as_p }}
+            <button type="submit" name="register">Register</button>
+        </form>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
